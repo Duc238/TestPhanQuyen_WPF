@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="UserRole_PhanQuyen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Users_PhanQuyen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar(max)" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Users_Pha__IdRol__3F466844">
+          <End Role="UserRole_PhanQuyen" Type="Self.UserRole_PhanQuyen" Multiplicity="1" />
+          <End Role="Users_PhanQuyen" Type="Self.Users_PhanQuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole_PhanQuyen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users_PhanQuyen">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TestModelStoreContainer">
+          <EntitySet Name="UserRole_PhanQuyen" EntityType="Self.UserRole_PhanQuyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users_PhanQuyen" EntityType="Self.Users_PhanQuyen" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Users_Pha__IdRol__3F466844" Association="Self.FK__Users_Pha__IdRol__3F466844">
+            <End Role="UserRole_PhanQuyen" EntitySet="UserRole_PhanQuyen" />
+            <End Role="Users_PhanQuyen" EntitySet="Users_PhanQuyen" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="UserRole_PhanQuyen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users_PhanQuyen" Relationship="Self.FK__Users_Pha__IdRol__3F466844" FromRole="UserRole_PhanQuyen" ToRole="Users_PhanQuyen" />
+        </EntityType>
+        <EntityType Name="Users_PhanQuyen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserRole_PhanQuyen" Relationship="Self.FK__Users_Pha__IdRol__3F466844" FromRole="Users_PhanQuyen" ToRole="UserRole_PhanQuyen" />
+        </EntityType>
+        <Association Name="FK__Users_Pha__IdRol__3F466844">
+          <End Role="UserRole_PhanQuyen" Type="Self.UserRole_PhanQuyen" Multiplicity="1" />
+          <End Role="Users_PhanQuyen" Type="Self.Users_PhanQuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole_PhanQuyen">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users_PhanQuyen">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TestEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserRole_PhanQuyen" EntityType="Self.UserRole_PhanQuyen" />
+          <EntitySet Name="Users_PhanQuyen" EntityType="Self.Users_PhanQuyen" />
+          <AssociationSet Name="FK__Users_Pha__IdRol__3F466844" Association="Self.FK__Users_Pha__IdRol__3F466844">
+            <End Role="UserRole_PhanQuyen" EntitySet="UserRole_PhanQuyen" />
+            <End Role="Users_PhanQuyen" EntitySet="Users_PhanQuyen" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TestModelStoreContainer" CdmEntityContainer="TestEntities">
+          <EntitySetMapping Name="UserRole_PhanQuyen">
+            <EntityTypeMapping TypeName="TestModel.UserRole_PhanQuyen">
+              <MappingFragment StoreEntitySet="UserRole_PhanQuyen">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users_PhanQuyen">
+            <EntityTypeMapping TypeName="TestModel.Users_PhanQuyen">
+              <MappingFragment StoreEntitySet="Users_PhanQuyen">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
