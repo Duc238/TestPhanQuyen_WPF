@@ -8,4 +8,4 @@ nếu nhập User Name là Staff và Password là staff và chọn quyền là s
 nếu nhập User Name là Staff và Password là staff mà chưa chọn quyền thì khi nhấn button Login sẽ hiện ra thông báo là Vui lòng chọn quyền,
 nếu nhập User Name là Admin và Password là staff và chọn quyền là admin thì khi nhấn button Login sẽ hiện ra thông báo là Đăng nhập thất bại,
 nếu nhập User Name là Admin và Password là admin và chọn quyền là staff thì khi nhấn button Login sẽ mở ra cửa sổ Staff,
-nếu nhập User Name là Staff và Password là staff và chọn quyền là admin thì khi nhấn button Login sẽ mở ra cửa sổ Admin,
+nếu nhập User Name là Staff và Password là staff và chọn quyền là admin thì khi nhấn button Login sẽ mở ra cửa sổ Admin
