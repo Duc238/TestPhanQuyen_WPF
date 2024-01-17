@@ -16,4 +16,4 @@ nếu nhập User Name là Admin và Password là admin và chọn quyền là s
 
 nếu nhập User Name là Staff và Password là staff và chọn quyền là admin thì khi nhấn button Login sẽ mở ra cửa sổ Admin
 
-Mình làm dựa trên dữ liệu lấy từ CSDL SQL Server. Mình đã có đính kèm vào project này CSDL SQL Server rồi, tên là script.sql
+Mình làm dựa trên dữ liệu lấy từ CSDL SQL Server. Mình đã có đính kèm vào project này 1 file mà mình generate ra từ CSDL SQL Server rồi, file tên là script.sql
